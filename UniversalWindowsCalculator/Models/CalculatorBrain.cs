@@ -43,9 +43,35 @@ namespace UniversalWindowsCalculator.Models
             }
         }
 
+        public void PressedOperand(double operand)
+        {
+            /// TODO: Handle numeric key press
+            /// Add to first operand, if operator is null. Otherwise, add to second
+        }
+
+        public void PressedOperator(OperatorType @operator)
+        {
+            /// TODO: Handle +-*/ key press
+        }
+
+        public void PressedBackspace()
+        {
+            /// TODO: Handle backspace key press
+            /// Remove from second if not null, remove operator if not null, remove first if not null
+        }
+
+        public void PressedEquals()
+        {
+            /// TODO: Handle equals key press
+            /// If a result value exists, assign it to first operand and clear the result
+        }
+
 
         public enum OperatorType { Add, Subtract, Multiply, Divide}
 
+        /// <summary>
+        /// Extension class to convert enums to display strings.
+        /// </summary>
         static class OperatorTypeExtension
         {
             public static string OperatorToString(OperatorType? @operator)
@@ -61,6 +87,31 @@ namespace UniversalWindowsCalculator.Models
             }
         }
 
+        /// <summary>
+        /// Accepts two operands and an operator to calculte a double value.
+        /// Returns infinity if divide-by-zero occurs.
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="operator"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        private double CalculateResult(double first, OperatorType @operator, double second)
+        {
+            switch (@operator)
+            {
+                case OperatorType.Add: return first + second;
+                case OperatorType.Subtract: return first - second;
+                case OperatorType.Multiply: return first * second;
+                case OperatorType.Divide: return second == 0 ? first / second : double.PositiveInfinity;
+
+                default: return 0;
+            }
+        }
+
+        /// <summary>
+        /// Calling this notifies any listener about the property changed.
+        /// </summary>
+        /// <param name="name"></param>
         protected void RaisePropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
