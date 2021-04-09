@@ -35,8 +35,9 @@ namespace UniversalWindowsCalculator.Models
                 string resultString = string.Empty;
                 if(_firstOperand != null && _operator != null && _secondOperand != null)
                 {
-                    /// TODO: Implement four operations
-                    resultString = 0.ToString();
+                    resultString = CalculateResult(
+                        (double)_firstOperand, (OperatorType)_operator, (double)_secondOperand
+                    ).ToString();
                 }
 
                 return resultString;
@@ -65,19 +66,63 @@ namespace UniversalWindowsCalculator.Models
 
         public void PressedOperator(OperatorType @operator)
         {
-            /// TODO: Handle +-*/ key press
+            /// Only one operator is allowed and must come after the first operand
+            if (_firstOperand == null) return;
+            _operator = @operator;
+
+            RaisePropertyChanged("ScreenValue");
+            RaisePropertyChanged("Result");
         }
 
+        /// <summary>
+        /// TODO:This only works for whole numbers right now
+        /// </summary>
         public void PressedBackspace()
         {
-            /// TODO: Handle backspace key press
-            /// Remove from second if not null, remove operator if not null, remove first if not null
+            /// If second operator is not null, remove its last digit
+            if (_secondOperand != null)
+            {
+                /// Single digit
+                if (_secondOperand < 10) { _secondOperand = null; }
+                else
+                {
+                    var remainder = _secondOperand % 10;
+                    _secondOperand -= remainder;
+                    _secondOperand /= 10;
+                }
+            } else if (_operator != null)
+            {
+                _operator = null;
+            } else if (_firstOperand != null)
+            {
+                /// Single digit
+                if (_firstOperand < 10) { _firstOperand = null; }
+                else
+                {
+                    var remainder = _firstOperand % 10;
+                    _firstOperand -= remainder;
+                    _firstOperand /= 10;
+                }
+            }
+
+            /// Both ScreenValue and Result maybe updated
+            RaisePropertyChanged("ScreenValue");
+            RaisePropertyChanged("Result");
         }
 
         public void PressedEquals()
         {
-            /// TODO: Handle equals key press
-            /// If a result value exists, assign it to first operand and clear the result
+            if (_secondOperand == null) return;
+
+            _firstOperand = CalculateResult(
+                (double)_firstOperand, (OperatorType)_operator, (double)_secondOperand
+                );
+            _operator = null;
+            _secondOperand = null;
+
+            /// Both ScreenValue and Result maybe updated
+            RaisePropertyChanged("ScreenValue");
+            RaisePropertyChanged("Result");
         }
 
 
@@ -93,9 +138,9 @@ namespace UniversalWindowsCalculator.Models
                 switch (@operator)
                 {
                     case OperatorType.Add: return "+";
-                    case OperatorType.Subtract: return "+";
-                    case OperatorType.Multiply: return "+";
-                    case OperatorType.Divide: return "+";
+                    case OperatorType.Subtract: return "-";
+                    case OperatorType.Multiply: return "×";
+                    case OperatorType.Divide: return "÷";
                     default: return "";
                 }
             }
@@ -116,7 +161,7 @@ namespace UniversalWindowsCalculator.Models
                 case OperatorType.Add: return first + second;
                 case OperatorType.Subtract: return first - second;
                 case OperatorType.Multiply: return first * second;
-                case OperatorType.Divide: return second == 0 ? first / second : double.PositiveInfinity;
+                case OperatorType.Divide: return second != 0 ? first / second : double.PositiveInfinity;
 
                 default: return 0;
             }

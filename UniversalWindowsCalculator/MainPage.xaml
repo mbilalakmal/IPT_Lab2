@@ -56,7 +56,7 @@
             <TextBlock Text="2" FontSize="24"/>
         </Button>
         <Button x:Name="Dial0Button" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch"
-                VerticalAlignment="Top" Background="Transparent" Grid.ColumnSpan="2" Height="159" Margin="25,24,266,0" Click="Dial0Button_Click">
+                VerticalAlignment="Top" Background="Transparent" Click="Dial0Button_Click">
             <TextBlock Text="0" FontSize="24"/>
         </Button>
 
