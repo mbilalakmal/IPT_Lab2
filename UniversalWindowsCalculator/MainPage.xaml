@@ -31,46 +31,72 @@
                    Text="{x:Bind Path=calculatorBrain.Result}" Foreground="LightGray"/>
 
         <Button x:Name="Dial7Button" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial7Button_Click">
             <TextBlock Text="7" FontSize="24"/>
         </Button>
         <Button x:Name="Dial4Button" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial4Button_Click">
             <TextBlock Text="4" FontSize="24"/>
         </Button>
         <Button x:Name="Dial1Button" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial1Button_Click">
             <TextBlock Text="1" FontSize="24"/>
         </Button>
 
         <Button x:Name="Dial8Button" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial8Button_Click">
             <TextBlock Text="8" FontSize="24"/>
         </Button>
         <Button x:Name="Dial5Button" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial5Button_Click">
             <TextBlock Text="5" FontSize="24"/>
         </Button>
         <Button x:Name="Dial2Button" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial2Button_Click">
             <TextBlock Text="2" FontSize="24"/>
         </Button>
         <Button x:Name="Dial0Button" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Top" Background="Transparent" Grid.ColumnSpan="2" Height="159" Margin="25,24,266,0" Click="Dial0Button_Click">
             <TextBlock Text="0" FontSize="24"/>
         </Button>
 
         <Button x:Name="Dial9Button" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial9Button_Click">
             <TextBlock Text="9" FontSize="24"/>
         </Button>
         <Button x:Name="Dial6Button" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial6Button_Click">
             <TextBlock Text="6" FontSize="24"/>
         </Button>
         <Button x:Name="Dial3Button" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" Background="Transparent">
+                VerticalAlignment="Stretch" Background="Transparent" Click="Dial3Button_Click">
             <TextBlock Text="3" FontSize="24"/>
+        </Button>
+
+        <Button x:Name="DivideButton" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" Background="Transparent" Foreground="MediumSlateBlue" Click="DivideButton_Click">
+            <TextBlock Text="÷" FontSize="24"/>
+        </Button>
+        <Button x:Name="MultiplyButton" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" Background="Transparent" Foreground="MediumSlateBlue" Click="MultiplyButton_Click">
+            <TextBlock Text="×" FontSize="24"/>
+        </Button>
+        <Button x:Name="SubtractButton" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" Background="Transparent" Foreground="MediumSlateBlue" Click="SubtractButton_Click">
+            <TextBlock Text="-" FontSize="24"/>
+        </Button>
+        <Button x:Name="AddButton" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" Background="Transparent" Foreground="MediumSlateBlue" Click="AddButton_Click">
+            <TextBlock Text="+" FontSize="24"/>
+        </Button>
+
+        <Button x:Name="BackButton" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" Background="Transparent" Foreground="MediumSlateBlue" Click="BackButton_Click">
+            <FontIcon Glyph="&#xE94F;"/>
+        </Button>
+        <Button x:Name="EqualsButton" Grid.Row="5" Grid.Column="4" HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" Background="Transparent" Foreground="MediumSlateBlue" Click="EqualsButton_Click">
+            <TextBlock Text="=" FontSize="24"/>
         </Button>
 
     </Grid>
