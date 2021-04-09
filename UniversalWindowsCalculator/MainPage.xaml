@@ -26,9 +26,9 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.ColumnSpan="5" FontSize="42" HorizontalAlignment="Right"
-                   Text="{x:Bind Path=calculatorBrain.ScreenValue}"/>
+                   Text="{x:Bind Path=calculatorBrain.ScreenValue, Mode=OneWay}"/>
         <TextBlock Grid.ColumnSpan="5" Grid.Row="1" FontSize="36" HorizontalAlignment="Right"
-                   Text="{x:Bind Path=calculatorBrain.Result}" Foreground="LightGray"/>
+                   Text="{x:Bind Path=calculatorBrain.Result, Mode=OneWay}" Foreground="LightGray"/>
 
         <Button x:Name="Dial7Button" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch" Background="Transparent" Click="Dial7Button_Click">

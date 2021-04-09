@@ -45,8 +45,22 @@ namespace UniversalWindowsCalculator.Models
 
         public void PressedOperand(double operand)
         {
-            /// TODO: Handle numeric key press
-            /// Add to first operand, if operator is null. Otherwise, add to second
+            if(_operator == null)
+            {
+                /// Update first operand
+                if(_firstOperand == null) { _firstOperand = operand; }
+                else { _firstOperand *= 10; _firstOperand += operand; }
+            }
+            else
+            {
+                /// Update second operand
+                if (_secondOperand == null) { _secondOperand = operand; }
+                else { _secondOperand *= 10; _secondOperand += operand; }
+            }
+
+            /// Both ScreenValue and Result maybe updated
+            RaisePropertyChanged("ScreenValue");
+            RaisePropertyChanged("Result");
         }
 
         public void PressedOperator(OperatorType @operator)
