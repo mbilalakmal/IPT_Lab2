@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using UniversalWindowsCalculator.Models;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -10,6 +11,8 @@ namespace UniversalWindowsCalculator
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        public CalculatorBrain calculatorBrain = new CalculatorBrain();
         public MainPage()
         {
             this.InitializeComponent();
